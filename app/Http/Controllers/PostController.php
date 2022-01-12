@@ -47,7 +47,7 @@ class PostController extends Controller
         ]);
         // dd($validated["email"]);
         // $user = User::all();
-        $user = User::where("email" , $validated["email"])->first();
+        $user = User::where("email", $validated["email"])->first();
         // dd($user);
         $imagePath = request('cover')->store('uploads', 'public');
         $post = $user->posts()->create([
