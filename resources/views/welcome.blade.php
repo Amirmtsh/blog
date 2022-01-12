@@ -25,30 +25,22 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">
                 
-                    <form method="POST" action="/" enctype="multipart/form-data">
+                    <form method="POST" action="/registerWriter" >
         
                         <div class="form-group">
                             <div>
-                                <label for="title" value="{{ __('Name') }}" />
-                                <input id="title" class="block mt-1 w-full" type="text" name="title" :value="old('name')" required autofocus autocomplete="name" />
+                                <label for="name" value="{{ __('Name') }}" />
+                                <input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                             </div>
                             <div>
                                 <label for="email" value="{{ __('Name') }}" />
                                 <input id="email" class="block mt-1 w-full" type="text" name="email" :value="old('name')" required autofocus autocomplete="name" />
                             </div>
                             <div class="mt-4">
-                                <label for="discription" value="{{ __('Number') }}" />
-                                <input id="discription" class="block mt-1 w-full" type="text" name="discription" :value="old('number')" required />
+                                <label for="password" value="{{ __('Number') }}" />
+                                <input id="password" class="block mt-1 w-full" type="text" name="password" :value="old('number')" required />
                             </div>
-                            <div class="row">
-                                <label for="cover" class="col-md-4 col-form-label">Profile Image</label>
-            
-                                <input type="file" class="form-control-file" id="cover" name="cover">
-            
-                                @if ($errors->has('cover'))
-                                    <strong>{{ $errors->first('cover') }}</strong>
-                                @endif
-                            </div>
+
                             <div class="flex items-center justify-center mt-4">
                                 <button class="ml-4">
                                     {{ __('Register') }}

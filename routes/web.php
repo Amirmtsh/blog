@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\WriterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,5 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::resource('/', PostController::class);
 Route::get('/{id}', [PostController::class,'show']);
+Route::post('/registerWriter', [WriterController::class,'store']);
+

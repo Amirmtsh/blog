@@ -17,12 +17,13 @@ class ExampleTest extends TestCase
      */
     public function test_example()
     {
-        $user = User::factory()->create(['email' => 'test@example.com']);
+        $user = User::factory()->create(['email' => 'testsada@example.com']);
         Storage::fake('avatars');
 
         $file = UploadedFile::fake()->image('cover.jpg');
-        // $response = $this->get('/');
         $response = $this->post('/',["title" => "aa sdad ad" , "discription" => "sdfsd fs fasf asdasd ad a a dad ad ada " , "cover"=> $file,'email' => $user->email]);
+        // $response = $this->get('/');
+        // $response = $this->post('/registerWriter',["name" => "aa sdad ad" , "email" => "example@email.com" , "password"=> '1354646asdad']);
         dd($response);
     }
 }
