@@ -21,7 +21,7 @@ class WriterController extends Controller
             'password' => bcrypt($validated["password"])
         ]);
 
-        return response(["writer" =>  $writer , "token" => $writer->createToken('MyApp')->accessToken]);
+        return response(["writer" =>  $writer, "token" => $writer->createToken('MyApp')->accessToken]);
     }
     public function login(Request $request)
     {
@@ -30,7 +30,7 @@ class WriterController extends Controller
             'password' => 'required',
         ]);
         $writer = User::where('email', $validated["email"])->first();
-        if (!$writer || Hash::check($validated['password'], $writer->password)) {
+        if (!$writer || !Hash::check($validated['password'], $writer->password)) {
             return response([
                 'message' => 'wrong creds'
             ], 401);

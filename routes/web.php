@@ -23,4 +23,3 @@ Route::middleware('auth:api')->group(function () {
 });
 Route::post('/writers/register', [WriterController::class, 'register']);
 Route::post('/writers/login', [WriterController::class, 'login']);
-

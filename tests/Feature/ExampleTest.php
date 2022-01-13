@@ -18,14 +18,15 @@ class ExampleTest extends TestCase
     public function test_example()
     {
         // $user = User::factory()->create(['email' => 'testasdsada@example.com']);
-        Storage::fake('avatars');
+        // Storage::fake('avatars');
 
-        $file = UploadedFile::fake()->image('cover.jpg');
+        // $file = UploadedFile::fake()->image('cover.jpg');
         // $response = $this->get('/');
-        $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzVkOTdkZGM0MjUwMGE1MWQ3ZWQxODhhZWMxYTY5NzRjYmUwOTkyNGU0OWJhMzdlMDU4NDQ3ZmJlZmExZjY0ZmVmNGM5MThkYjJmMTY0ZTciLCJpYXQiOjE2NDIwMDU5MDcuMTIwMjc0LCJuYmYiOjE2NDIwMDU5MDcuMTIwMjc2LCJleHAiOjE2NzM1NDE5MDcuMTEyOTk0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.qqZyO8_ni9yOtnUSwBSPITHwKmc1yCGCWpzWYuogqcK7jRDAW-T42wP6gG8BJh8uWjbU_L9PmUX495mstAD6YqQvrCpcMiGMp9L4ojGO8MEQG58vww4TW_uqohuLyQKc_GbklbeENrY0ych1SnjKGARSMFOYZMOyzqrc5jMPkHJFOFzIj8Z0ej6yLQh8_9WjFrwGanrl9bKJPOjJLwULb95m6Fk5ae6VVO6swCKAAu3gJ7jsLN0pqljnAGVH5HXzLeRfUIeYCK987I3roG0B2LksIii2eEZ-mQ9Cqjn2nU7OpqCTepgEfg3Dc7ZdFgHRMBGqUmVzajBkLyUatn5JM29IJH-DbwE6rTXmitmF8xIVRQCVlvnlVZIaK9sYd2t52QuhJYE9t3HqLgKLfQz0t70lr0uk-h0RZQozpDD-bYEhAnda9v7dTWImZ2Je2syfnpdOrnH8hkM7sFY78dnXKJLoASc0FcQJ6C3uYIoCildGAaziAlLcMQXnL3Sag_R4OUA3i_vPDFoKPp-0kcsZy_xrzE6NG09EBbhoAKcmT5ViCWWhB1FRKbbHa3YjXXufcfwn0xxi339Wg7m18DByjhYpItu2vRlSy45xQMjZiTNFi0e3c-Knxr74P-eBu4OnXBJVZJ2e11faAxgMs7hBlkR-fno2MNRLCfdAA3KhXVM";
-        $response = $this->withHeader('Authorization', 'Bearer ' . $token)->get('/posts');
+        $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODZjYTlmNzlmMTMzYWY3MjRhMGI3ZWIxOWZiZDUzMzIwN2FjODZiYWRlZGE2MGU0MmJmNjViMzdiMjNkMzk1ODJmYmVkZmUwMGYxOGJlNzUiLCJpYXQiOjE2NDIwNjczOTUuMDQ1MTExLCJuYmYiOjE2NDIwNjczOTUuMDQ1MTEzLCJleHAiOjE2NzM2MDMzOTUuMDM2MTEzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.fd3ON9DPwkBshunFPhZRZAtcuEJ5D9XJzG-rejG843QvyZrrRNFzJGjQ-OC9mPE-hbWvM2taVT4ZOdmdGFnCViD2YzQYNNAh92N0r07sQnnHz6GDECkml0q1W0zuz-7NQceta4gDGv7qfpYh2thiNjRxkSIvS7iyTtgoEGg8e2PH4xRHrj7pH5VJvHvLyBO3AV7_G8WFEQHEIgcAXawdoSFrqGA0viSYgRTNWbOlr7kJDSwp_xdAeu0sQS2Zb8KemEvKAITwl3iLBZLLeus97n36iTf0UMHuPQq9mM7W0ifogiunzga5PkzejXIzK4lKCPYipE-mBTOvlMsrkH27DFTR3HnxcqDZmop_XnQo2t2MkVpxTW_exvS4aXhzMl1CBHqIccYI2B5wE8D4RWmXBip2NhOcBCyUgk_tKGhZiR1TnXSb65Ez-1gW1axG35JnJew4rdg9paR3oICrMNnh7jCnkelNDYqOOCt9ncNkhsTF9lOQyoCK2jHyhLAJtsdYPTTRiv-SUbvj1O1rrSOSdkmZTlVMa0zT-GHp48kin33RlT5ZH-OTyNMV2udd-BG6VZb6PhtOuqyGcZAjQVKlyEyiXquWSTSifenI18UoPspS-WQ3est7yyYIZigRccUkEvUA9Yh_VxV8nVAMWeaaFzwXxwfEOic6CTZ-k9J9Tvg";
+        $response = $this->withHeaders(['Authorization' => 'Bearer ' . $token, 'Accept' => 'application/json'])->get('/posts');
 
         // $response = $this->post('/writers/register', ["name" => "aasdasd", "email" => "tesasdsada@example.com", "password" => "asdkhdaih545a54"]);
+        // $response = $this->withHeader('Accept', 'application/json')->post('/writers/login', [ "email" => "tesasdsada@example.com", "password" => "asdkhdaih545a54"]);
 
         dd($response);
     }
