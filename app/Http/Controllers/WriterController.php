@@ -23,6 +23,7 @@ class WriterController extends Controller
 
         return response(["writer" =>  $writer, "token" => $writer->createToken('MyApp')->accessToken]);
     }
+
     public function login(Request $request)
     {
         $validated = request()->validate([

@@ -45,16 +45,16 @@ class PostController extends Controller
             'cover' => 'required',
             'email' => 'required',
         ]);
-        // dd($validated["email"]);
-        // $user = User::all();
         $user = User::where("email", $validated["email"])->first();
-        // dd($user);
+
         $imagePath = request('cover')->store('uploads', 'public');
+
         $post = $user->posts()->create([
             'title' => $validated["title"],
             'discription' => $validated["discription"],
             'cover' => "/storage/{$imagePath}"
         ]);
+
         return $post;
     }
     /**
