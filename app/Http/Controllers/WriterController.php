@@ -15,6 +15,10 @@ class WriterController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
+        $user = User::where("email", $validated["email"])->first();
+        if ($user) {
+            return response(["message" => "user with email {$validated["email"]} already exists"]);
+        }
         $writer = User::create([
             'name' => $validated["name"],
             'email' => $validated["email"],
@@ -38,5 +42,13 @@ class WriterController extends Controller
         }
 
         return response(["writer" => $writer, "token" => $writer->createToken('MyApp')->accessToken]);
+    }
+    public function getPosts(Request $request, $id)
+    {
+        $user = User::where("id", $id)->first();
+        if (!$user) {
+            return response(["message" => "user with id {$id} not found"], 404);
+        }
+        return $user->posts()->get()->toArray();
     }
 }

@@ -17,7 +17,16 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        return $posts;
+        $response = [];
+        foreach ($posts as $post) {
+            $response[] = [
+                "post" => $post,
+                "writer" => $post->user->first()->toarray(),
+                "comments" => $post->comments()->get()->toArray(),
+                "tags" => $post->tags()->get()->toArray()
+            ];
+        }
+        return response($response);
         // return view("welcome",compact('posts'));
     }
 
@@ -46,7 +55,9 @@ class PostController extends Controller
             'email' => 'required',
         ]);
         $user = User::where("email", $validated["email"])->first();
-
+        if (!$user) {
+            return response(["message" => "user with email {$validated["email"]} not found"], 404);
+        }
         $imagePath = request('cover')->store('uploads', 'public');
 
         $post = $user->posts()->create([
@@ -65,8 +76,16 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $user = User::where("id", $id)->first();
-        return $user->posts;
+        $post = Post::where("id", $id)->first();
+        if (!$post) {
+            return response(["message" => "post with id {$id} not found"], 404);
+        }
+        return response()->json([
+            "post" => $post,
+            "writer" => $post->user->first()->toarray(),
+            "comments" => $post->comments()->get()->toArray(),
+            "tags" => $post->tags()->get()->toArray()
+        ]);
     }
 
     /**

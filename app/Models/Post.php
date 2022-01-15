@@ -13,6 +13,10 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class , 'post_tag');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
     public function comments()
     {
         return $this->hasMany(Comment::class );
