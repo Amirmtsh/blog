@@ -16,17 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
-        $response = [];
-        foreach ($posts as $post) {
-            $response[] = [
-                "post" => $post,
-                "writer" => $post->user->first()->toarray(),
-                "comments" => $post->comments()->get()->toArray(),
-                "tags" => $post->tags()->get()->toArray()
-            ];
-        }
-        return response($response);
+        $posts = Post::with(['tags', 'comments' , "user"])->get();
+        dd($posts);
+        return response();
         // return view("welcome",compact('posts'));
     }
 

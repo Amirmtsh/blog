@@ -22,10 +22,12 @@ Route::get('/', function () {
 });
 Route::middleware('auth:api')->group(function () {
 
+
+});
 Route::resource('/posts', PostController::class);
 Route::post('/posts/{id}/comments', [CommentController::class, 'store']);
 Route::post('/posts/{id}/tags', [TagController::class, 'store']);
-});
+
 
 Route::post('/writers/register', [WriterController::class, 'register']);
 Route::post('/writers/login', [WriterController::class, 'login']);
