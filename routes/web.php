@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\WriterCommentController;
 use App\Http\Controllers\WriterController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,8 @@ Route::middleware('auth:api')->group(function () {
 Route::resource('/posts', PostController::class);
 Route::post('/posts/{id}/comments', [CommentController::class, 'store']);
 Route::post('/posts/{id}/tags', [TagController::class, 'store']);
+Route::resource('/writers/{id}/comments', WriterCommentController::class);
+
 
 
 Route::post('/writers/register', [WriterController::class, 'register']);

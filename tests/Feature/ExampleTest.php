@@ -38,14 +38,19 @@ class ExampleTest extends TestCase
         $response = $this->post("/posts/{$post->id}/tags", ["name" => "name1"]);
         // $response = $this->post("/posts/{$post->id}/tags", ["name" => "name2"]);
         // $response = $this->post("/posts/{$post->id}/tags", ["name" => "name2"]);
+        $response = $this->post("/writers/{$user->id}/comments", ["text" => "text1"]);
+        $response = $this->put("/writers/{$user->id}/comments/2", ["text" => "text124324234"]);
+        $response = $this->delete("/writers/{$user->id}/comments/2");
+
 
         // $response = $this->withHeader('Accept', 'application/json')->get("/posts/{$post->id}");
         // $response = $this->withHeader('Accept', 'application/json')->get("/posts/200");
-        $response = $this->get('/posts');
+        // $response = $this->get('/posts');
         // $response = $this->get("/writers/{$user->id}/posts");
         // $response = $this->get("/posts/{$post->id}/comments");
         // $response = $this->get("/posts/{$post->id}/tags");
         // $response = $this->get("/posts/200/tags");
+        $response = $this->get("/writers/{$user->id}/comments");
 
         // dd($post->tags()->get()->toArray());
         // dd($post->comments()->get()->toArray());
