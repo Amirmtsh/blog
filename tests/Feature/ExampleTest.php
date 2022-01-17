@@ -40,7 +40,7 @@ class ExampleTest extends TestCase
         // $response = $this->post("/posts/{$post->id}/tags", ["name" => "name2"]);
         $response = $this->post("/writers/{$user->id}/comments", ["text" => "text1"]);
         $response = $this->put("/writers/{$user->id}/comments/2", ["text" => "text124324234"]);
-        $response = $this->delete("/writers/{$user->id}/comments/2");
+        // $response = $this->delete("/writers/{$user->id}/comments/2");
 
 
         // $response = $this->withHeader('Accept', 'application/json')->get("/posts/{$post->id}");
